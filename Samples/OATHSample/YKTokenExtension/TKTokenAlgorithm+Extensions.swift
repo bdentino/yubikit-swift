@@ -17,6 +17,7 @@
 import CryptoTokenKit
 import CommonCrypto
 import YubiKit
+import OSLog
 
 private let rsaKeyType = kSecAttrKeyTypeRSA as String
 private let ecPrimeKeyType = kSecAttrKeyTypeECSECPrimeRandom as String
@@ -33,6 +34,18 @@ private let baseYubiKeyAlgorithms: Set<SecKeyAlgorithm> = [
     .rsaSignatureDigestPKCS1v15SHA256,
     .rsaSignatureDigestPKCS1v15SHA384,
     .rsaSignatureDigestPKCS1v15SHA512,
+    
+    // RSA PSS signing (message + digest)
+    .rsaSignatureMessagePSSSHA1,
+    .rsaSignatureMessagePSSSHA224,
+    .rsaSignatureMessagePSSSHA256,
+    .rsaSignatureMessagePSSSHA384,
+    .rsaSignatureMessagePSSSHA512,
+    .rsaSignatureDigestPSSSHA1,
+    .rsaSignatureDigestPSSSHA224,
+    .rsaSignatureDigestPSSSHA256,
+    .rsaSignatureDigestPSSSHA384,
+    .rsaSignatureDigestPSSSHA512,
 
     // RSA decrypt / unwrap
     .rsaEncryptionRaw,
@@ -76,11 +89,6 @@ private let featureRequirements: [PIVSessionFeature: Set<SecKeyAlgorithm>] = [
 ]
 
 private let softwareSupportedAlgorithms: [SecKeyAlgorithm: Set<SecKeyAlgorithm>] = [
-    .rsaEncryptionOAEPSHA1AESGCM: [.rsaEncryptionOAEPSHA1],
-    .rsaEncryptionOAEPSHA224AESGCM: [.rsaEncryptionOAEPSHA224],
-    .rsaEncryptionOAEPSHA256AESGCM: [.rsaEncryptionOAEPSHA256],
-    .rsaEncryptionOAEPSHA384AESGCM: [.rsaEncryptionOAEPSHA384],
-    .rsaEncryptionOAEPSHA512AESGCM: [.rsaEncryptionOAEPSHA512],
     .ecdhKeyExchangeStandardX963SHA1: [.ecdhKeyExchangeStandard],
     .ecdhKeyExchangeStandardX963SHA224: [.ecdhKeyExchangeStandard],
     .ecdhKeyExchangeStandardX963SHA256: [.ecdhKeyExchangeStandard],
@@ -366,10 +374,13 @@ extension TKTokenKeyAlgorithm {
         
         switch keyType {
         case rsaKeyType:
+            os_log(.debug, log: log, "Checking if secAlgo %{public}@ is RSA", secAlgo.rawValue as String)
             return isRSAAlgorithm(secAlgo)
         case ecPrimeKeyType:
+            os_log(.debug, log: log, "Checking if secAlgo %{public}@ is EC", secAlgo.rawValue as String)
             return isECAlgorithm(secAlgo)
         default:
+            os_log(.debug, log: log, "keyType %{public}@ is not a supported key type", keyType)
             return false
         }
     }
@@ -493,53 +504,53 @@ public enum PIVAlgorithm: Sendable {
         // RSA Signature Algorithms - PKCS#1 v1.5
         switch secKeyAlgorithm {
         case .rsaSignatureDigestPKCS1v15SHA1:
-            self = .rsaSignature(.pkcs1v15(.sha1))
+            self = .rsaSignature(.digest(.pkcs1v15(.sha1)))
         case .rsaSignatureDigestPKCS1v15SHA224:
-            self = .rsaSignature(.pkcs1v15(.sha224))
+            self = .rsaSignature(.digest(.pkcs1v15(.sha224)))
         case .rsaSignatureDigestPKCS1v15SHA256:
-            self = .rsaSignature(.pkcs1v15(.sha256))
+            self = .rsaSignature(.digest(.pkcs1v15(.sha256)))
         case .rsaSignatureDigestPKCS1v15SHA384:
-            self = .rsaSignature(.pkcs1v15(.sha384))
+            self = .rsaSignature(.digest(.pkcs1v15(.sha384)))
         case .rsaSignatureDigestPKCS1v15SHA512:
-            self = .rsaSignature(.pkcs1v15(.sha512))
+            self = .rsaSignature(.digest(.pkcs1v15(.sha512)))
         case .rsaSignatureDigestPKCS1v15Raw:
             self = .rsaSignature(.raw)
             
         // RSA Signature Algorithms - PSS
         case .rsaSignatureDigestPSSSHA1:
-            self = .rsaSignature(.pss(.sha1))
+            self = .rsaSignature(.digest(.pss(.sha1)))
         case .rsaSignatureDigestPSSSHA224:
-            self = .rsaSignature(.pss(.sha224))
+            self = .rsaSignature(.digest(.pss(.sha224)))
         case .rsaSignatureDigestPSSSHA256:
-            self = .rsaSignature(.pss(.sha256))
+            self = .rsaSignature(.digest(.pss(.sha256)))
         case .rsaSignatureDigestPSSSHA384:
-            self = .rsaSignature(.pss(.sha384))
+            self = .rsaSignature(.digest(.pss(.sha384)))
         case .rsaSignatureDigestPSSSHA512:
-            self = .rsaSignature(.pss(.sha512))
+            self = .rsaSignature(.digest(.pss(.sha512)))
             
         // RSA Message Signature Algorithms - PKCS#1 v1.5
         case .rsaSignatureMessagePKCS1v15SHA1:
-            self = .rsaSignature(.pkcs1v15(.sha1))
+            self = .rsaSignature(.message(.pkcs1v15(.sha1)))
         case .rsaSignatureMessagePKCS1v15SHA224:
-            self = .rsaSignature(.pkcs1v15(.sha224))
+            self = .rsaSignature(.message(.pkcs1v15(.sha224)))
         case .rsaSignatureMessagePKCS1v15SHA256:
-            self = .rsaSignature(.pkcs1v15(.sha256))
+            self = .rsaSignature(.message(.pkcs1v15(.sha256)))
         case .rsaSignatureMessagePKCS1v15SHA384:
-            self = .rsaSignature(.pkcs1v15(.sha384))
+            self = .rsaSignature(.message(.pkcs1v15(.sha384)))
         case .rsaSignatureMessagePKCS1v15SHA512:
-            self = .rsaSignature(.pkcs1v15(.sha512))
+            self = .rsaSignature(.message(.pkcs1v15(.sha512)))
             
         // RSA Message Signature Algorithms - PSS
         case .rsaSignatureMessagePSSSHA1:
-            self = .rsaSignature(.pss(.sha1))
+            self = .rsaSignature(.message(.pss(.sha1)))
         case .rsaSignatureMessagePSSSHA224:
-            self = .rsaSignature(.pss(.sha224))
+            self = .rsaSignature(.message(.pss(.sha224)))
         case .rsaSignatureMessagePSSSHA256:
-            self = .rsaSignature(.pss(.sha256))
+            self = .rsaSignature(.message(.pss(.sha256)))
         case .rsaSignatureMessagePSSSHA384:
-            self = .rsaSignature(.pss(.sha384))
+            self = .rsaSignature(.message(.pss(.sha384)))
         case .rsaSignatureMessagePSSSHA512:
-            self = .rsaSignature(.pss(.sha512))
+            self = .rsaSignature(.message(.pss(.sha512)))
             
         // RSA Signature Raw
         case .rsaSignatureRaw:

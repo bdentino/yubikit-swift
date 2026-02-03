@@ -102,24 +102,29 @@ class TokenSession: TKSmartCardTokenSession, TKTokenSessionDelegate {
                 guard let slot = try? await pivSession.getSlotID(forOID: oid),
                       let metadata = try? await pivSession.getMetadata(in: slot)
                 else {
+                    os_log(.error, log: log, "Unable to sign data: objectNotFound")
                     throw TKError(.objectNotFound)
                 }
                 guard let secKeyAlgorithm = algorithm.secKeyAlgorithm,
                       let pivAlgorithm = PIVAlgorithm(secKeyAlgorithm: secKeyAlgorithm)
                 else {
+                    os_log(.error, log: log, "Unable to sign data: bad secKey or piv algorithm")
                     throw TKError(.badParameter)
                 }
                 
                 switch metadata.keyType {
                 case .rsa(let keySize):
+                    os_log(.debug, log: log, "Signing data of length %{public}d with rsa key size %{public}d", dataToSign.count, keySize.bitCount)
                     switch pivAlgorithm {
                     case .rsaSignature(let rsaAlg):
+                        os_log(.debug, log: log, "Signing data using RSA algorithm: %{public}@", String(describing: rsaAlg))
                         let signedData = try await pivSession.sign(
                             dataToSign,
                             in: slot,
                             keyType: PIV.RSAKey.rsa(keySize),
                             using: rsaAlg
                         )
+                        os_log(.debug, log: log, "Successfully signed data")
                         return signedData
                     default:
                         throw TKError(.badParameter)
@@ -138,6 +143,7 @@ class TokenSession: TKSmartCardTokenSession, TKTokenSessionDelegate {
                         throw TKError(.badParameter)
                     }
                 default:
+                    os_log(.error, log: log, "Unable to sign data, unrecognized key type")
                     throw TKError(.badParameter)
                 }
             }
@@ -148,6 +154,7 @@ class TokenSession: TKSmartCardTokenSession, TKTokenSessionDelegate {
                resp.status == .securityConditionNotSatisfied {
                 throw TKError(.authenticationNeeded)
             }
+            os_log(.error, log: log, "Unhandled signing error: %{public}@", String(describing: error))
             throw error
         }
     }
@@ -184,6 +191,7 @@ class TokenSession: TKSmartCardTokenSession, TKTokenSessionDelegate {
                 
                 switch metadata.keyType {
                 case .rsa(let keySize):
+                    os_log(.debug, log: log, "Decrypting data of length %{public}d with rsa key size %{public}d", ciphertext.count, keySize.bitCount)
                     switch pivAlgorithm {
                     case .rsaEncryption(let rsaAlg):
                         let decryptedData = try await pivSession.decrypt(
@@ -191,42 +199,7 @@ class TokenSession: TKSmartCardTokenSession, TKTokenSessionDelegate {
                             in: slot,
                             using: rsaAlg
                         )
-                        return decryptedData
-                    case .rsaEncryptionOAEPAESGCM(let hashAlgorithm):
-                        // Hybrid encryption: RSA-OAEP wraps AES key, AES-GCM encrypts data
-                        let wrappedKeyLength = keySize.bitCount / 8
-                        guard ciphertext.count > wrappedKeyLength + 12 + 16 else {
-                            throw TKError(.corruptedData)
-                        }
-                        
-                        // Extract wrapped AES key
-                        let wrappedKey = ciphertext.prefix(wrappedKeyLength)
-                        
-                        // YubiKey decrypts the wrapped AES key using RSA-OAEP with specified hash
-                        let unwrappedAESKey = try await pivSession.decrypt(
-                            wrappedKey,
-                            in: slot,
-                            using: hashAlgorithm.oaepAlgorithm
-                        )
-                        
-                        // Extract IV, ciphertext, and auth tag
-                        let remainingData = ciphertext.dropFirst(wrappedKeyLength)
-                        let ivLength = 12
-                        let tagLength = 16
-                        
-                        let iv = remainingData.prefix(ivLength)
-                        let encryptedContent = remainingData.dropFirst(ivLength).dropLast(tagLength)
-                        let tag = remainingData.suffix(tagLength)
-                        
-                        // Software AES-GCM decryption
-                        let symmetricKey = SymmetricKey(data: unwrappedAESKey)
-                        let nonce = try AES.GCM.Nonce(data: iv)
-                        let sealedBox = try AES.GCM.SealedBox(
-                            nonce: nonce,
-                            ciphertext: encryptedContent,
-                            tag: tag
-                        )
-                        let decryptedData = try AES.GCM.open(sealedBox, using: symmetricKey)
+                        os_log(.debug, log: log, "Successfully decrypted data")
                         return decryptedData
                     default:
                         throw TKError(.badParameter)
@@ -242,6 +215,7 @@ class TokenSession: TKSmartCardTokenSession, TKTokenSessionDelegate {
                resp.status == .securityConditionNotSatisfied {
                 throw TKError(.authenticationNeeded)
             }
+            os_log(.error, log: log, "Unhandled error: %{public}@", error.localizedDescription)
             throw error
         }
     }

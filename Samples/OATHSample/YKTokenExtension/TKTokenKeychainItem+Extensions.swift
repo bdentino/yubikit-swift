@@ -10,6 +10,7 @@ import CryptoTokenKit
 import X509
 import SwiftASN1
 import YubiKit
+import OSLog
 
 private let smartCardLogonOID = "1.3.6.1.4.1.311.20.2.2"
 
@@ -22,6 +23,7 @@ extension TKTokenKeychainKey {
     func isSupportedByYubiKeyVersion(_ version: YubiKit.Version) -> Bool {
         let keyType = self.keyType as CFString
         let keySize = self.keySizeInBits
+        os_log(.debug, log: log, "Checking yubikey version support for %{public}d bit %{public}@ key", keySize, keyType as String)
         switch keyType {
         case kSecAttrKeyTypeRSA:
             if keySize == 3072 || keySize == 4096 {

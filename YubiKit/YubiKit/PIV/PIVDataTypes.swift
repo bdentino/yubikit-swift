@@ -305,13 +305,18 @@ public enum PIV: Sendable {
         /// SHA-512 (512-bit)
         case sha512
     }
-
-    /// RSA signature algorithms supported by PIV
-    public enum RSASignatureAlgorithm: Sendable {
+    
+    public enum RSASignaturePaddingScheme: Sendable {
         /// PKCS#1 v1.5 signature with specified hash algorithm
         case pkcs1v15(HashAlgorithm)
         /// PSS (Probabilistic Signature Scheme) with specified hash algorithm
         case pss(HashAlgorithm)
+    }
+
+    /// RSA signature algorithms supported by PIV
+    public enum RSASignatureAlgorithm: Sendable {
+        case digest(RSASignaturePaddingScheme)
+        case message(RSASignaturePaddingScheme)
         /// Raw RSA signature operation (no padding)
         case raw
     }

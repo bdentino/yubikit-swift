@@ -251,21 +251,43 @@ extension PIV.RSASignatureAlgorithm {
     // Maps to the corresponding SecKeyAlgorithm
     fileprivate var secKeyAlgorithm: SecKeyAlgorithm {
         switch self {
-        case .pkcs1v15(let hash):
-            switch hash {
-            case .sha1: return .rsaSignatureMessagePKCS1v15SHA1
-            case .sha224: return .rsaSignatureMessagePKCS1v15SHA224
-            case .sha256: return .rsaSignatureMessagePKCS1v15SHA256
-            case .sha384: return .rsaSignatureMessagePKCS1v15SHA384
-            case .sha512: return .rsaSignatureMessagePKCS1v15SHA512
+        case .digest(let padding):
+            switch padding {
+            case .pkcs1v15(let hash):
+                switch hash {
+                case .sha1: return .rsaSignatureDigestPKCS1v15SHA1
+                case .sha224: return .rsaSignatureDigestPKCS1v15SHA224
+                case .sha256: return .rsaSignatureDigestPKCS1v15SHA256
+                case .sha384: return .rsaSignatureDigestPKCS1v15SHA384
+                case .sha512: return .rsaSignatureDigestPKCS1v15SHA512
+                }
+            case .pss(let hash):
+                switch hash {
+                case .sha1: return .rsaSignatureDigestPSSSHA1
+                case .sha224: return .rsaSignatureDigestPSSSHA224
+                case .sha256: return .rsaSignatureDigestPSSSHA256
+                case .sha384: return .rsaSignatureDigestPSSSHA384
+                case .sha512: return .rsaSignatureDigestPSSSHA512
+                }
             }
-        case .pss(let hash):
-            switch hash {
-            case .sha1: return .rsaSignatureMessagePSSSHA1
-            case .sha224: return .rsaSignatureMessagePSSSHA224
-            case .sha256: return .rsaSignatureMessagePSSSHA256
-            case .sha384: return .rsaSignatureMessagePSSSHA384
-            case .sha512: return .rsaSignatureMessagePSSSHA512
+        case .message(let padding):
+            switch padding {
+            case .pkcs1v15(let hash):
+                switch hash {
+                case .sha1: return .rsaSignatureMessagePKCS1v15SHA1
+                case .sha224: return .rsaSignatureMessagePKCS1v15SHA224
+                case .sha256: return .rsaSignatureMessagePKCS1v15SHA256
+                case .sha384: return .rsaSignatureMessagePKCS1v15SHA384
+                case .sha512: return .rsaSignatureMessagePKCS1v15SHA512
+                }
+            case .pss(let hash):
+                switch hash {
+                case .sha1: return .rsaSignatureMessagePSSSHA1
+                case .sha224: return .rsaSignatureMessagePSSSHA224
+                case .sha256: return .rsaSignatureMessagePSSSHA256
+                case .sha384: return .rsaSignatureMessagePSSSHA384
+                case .sha512: return .rsaSignatureMessagePSSSHA512
+                }
             }
         case .raw:
             return .rsaSignatureRaw
