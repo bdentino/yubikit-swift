@@ -48,6 +48,14 @@ struct SettingsView: View {
                     Text(model.keyVersion ?? "Unknown")
                         .fontWeight(.medium)
                 }
+                
+                HStack {
+                    Text("Serial No:")
+                        .foregroundColor(.secondary)
+                    Spacer()
+                    Text(model.keyIdentifier ?? "Unknown")
+                        .fontWeight(.medium)
+                }
             }
             .padding(.horizontal, 20)
             .frame(maxWidth: .infinity)

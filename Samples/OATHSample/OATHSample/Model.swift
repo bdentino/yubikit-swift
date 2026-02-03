@@ -28,25 +28,28 @@ class Model: ObservableObject {
 
     @Published private(set) var accounts = [Account]()
     @Published private(set) var keyVersion: String?
+    @Published private(set) var keyIdentifier: String?
     @Published private(set) var connectionType: String?
     @Published var error: Error?
 
     func update(using connection: SmartCardConnection) async {
         await calculateCodes(using: connection)
-        await getKeyVersion(using: connection)
+        await getKeyDetails(using: connection)
         connectionType = connection.connectionType
     }
 
     func clear() {
         accounts = []
         keyVersion = nil
+        keyIdentifier = nil
         connectionType = nil
     }
 
-    private func getKeyVersion(using connection: SmartCardConnection) async {
+    private func getKeyDetails(using connection: SmartCardConnection) async {
         do {
             let session: Management.Session = try await .makeSession(connection: connection)
             self.keyVersion = await session.version.description
+            self.keyIdentifier = try await session.getDeviceInfo().serialNumber.description
         } catch {
             self.error = error
         }

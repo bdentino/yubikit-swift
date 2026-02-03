@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1630"
+   LastUpgradeVersion = "2620"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "51A1AC09273D537500F999A4"
-               BuildableName = "OATHSample.app"
-               BlueprintName = "OATHSample"
+               BuildableName = "Authenticator.app"
+               BlueprintName = "Authenticator"
                ReferencedContainer = "container:OATHSample.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "51A1AC09273D537500F999A4"
-            BuildableName = "OATHSample.app"
-            BlueprintName = "OATHSample"
+            BuildableName = "Authenticator.app"
+            BlueprintName = "Authenticator"
             ReferencedContainer = "container:OATHSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "51A1AC09273D537500F999A4"
-            BuildableName = "OATHSample.app"
-            BlueprintName = "OATHSample"
+            BuildableName = "Authenticator.app"
+            BlueprintName = "Authenticator"
             ReferencedContainer = "container:OATHSample.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

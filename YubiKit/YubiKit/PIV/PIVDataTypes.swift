@@ -48,7 +48,7 @@ public enum PIV: Sendable {
     }
 
     /// The slot to use in the PIV application.
-    public enum Slot: UInt8, Sendable {
+    public enum Slot: UInt8, CaseIterable, Sendable {
         case authentication = 0x9a
         case signature = 0x9c
         case keyManagement = 0x9d

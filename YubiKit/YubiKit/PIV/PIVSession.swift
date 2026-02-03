@@ -724,6 +724,56 @@ public final actor PIVSession: SmartCardSessionInternal {
         let serial = CFSwapInt32BigToHost(result.uint32)
         return UInt(serial)
     }
+    
+    public func getCHUID() async throws(PIVSessionError) -> String? {
+        let data: Data = Data([
+            0x5C,               // Tag for data
+            0x03,               // Length of tag identifier
+            0x5F, 0xC1, 0x02    // CHUID tag (0x5FC102)
+        ])
+        let apdu = APDU(cla: 0, ins: insGetData, p1: 0x3F, p2: 0xFF, command: data)
+        let result = try await process(apdu: apdu)
+        return extractGUID(from: result)
+    }
+    
+    private func extractGUID(from chuidData: Data) -> String? {
+        var index = 0
+        
+        // Skip response status bytes (last 2 bytes are SW1 SW2)
+        let dataLength = chuidData.count - 2
+        
+        // Skip outer tag (0x53) and length
+        guard dataLength > 2, chuidData[index] == 0x53 else { return nil }
+        index += 1
+        
+        // Parse length (could be 1 or more bytes)
+        let lengthByte = chuidData[index]
+        if lengthByte & 0x80 != 0 {
+            // Multi-byte length
+            let numLengthBytes = Int(lengthByte & 0x7F)
+            index += numLengthBytes + 1
+        } else {
+            index += 1
+        }
+        
+        // Look for GUID tag (0x34)
+        while index < dataLength - 1 {
+            let tag = chuidData[index]
+            let length = Int(chuidData[index + 1])
+            index += 2
+            
+            if tag == 0x34 && length == 16 {
+                // Found GUID (16 bytes)
+                let subdata = chuidData.subdata(in: index..<(index + 16))
+                let guidHex = subdata.hexEncodedString
+                return guidHex.uppercased()
+            }
+            
+            index += length
+        }
+        
+        return nil
+    }
 
     /// Authenticate with PIN.
     /// - Parameter pin: The UTF8 encoded PIN. Default PIN code is 123456.

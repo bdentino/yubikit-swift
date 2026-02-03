@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>com.apple.ctk.token-type</key>
+			<string>smartcard</string>
+			<key>com.apple.ctk.class-id</key>
+			<string>sh.bjd.Authenticator.YKTokenExtension</string>
+			<key>com.apple.ctk.driver-class</key>
+			<string>$(PRODUCT_MODULE_NAME).TokenDriver</string>
+		</dict>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.ctk-tokens</string>
+	</dict>
+    <key>com.apple.ctk-tokens</key>
+    <dict>
+        <key>SmartCard</key>
+        <dict>
+            <key>SupportedSmartCards</key>
+            <array>
+                <dict>
+                    <key>ATR</key>
+                    <string>3B:FD:13:00:00:81:31:FE:15:80:73:C0:21:C0:57:59:75:62:69:4B:65:79:40</string>
+                </dict>
+            </array>
+        </dict>
+    </dict>
+</dict>
+</plist>

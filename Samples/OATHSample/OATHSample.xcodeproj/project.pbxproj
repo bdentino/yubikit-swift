@@ -3,10 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C31788F2F2AAAB900C93932 /* CryptoTokenKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8D97BB2F2A75230042DBCE /* CryptoTokenKit.framework */; };
+		2C3178942F2AAAFC00C93932 /* YubiKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C3178932F2AAAFC00C93932 /* YubiKit */; };
+		2C3178AC2F2AC86100C93932 /* TokenCertificateStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3178AB2F2AC86100C93932 /* TokenCertificateStorage.swift */; };
+		2C3178B12F2AC8ED00C93932 /* SecCertificate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3178B02F2AC8ED00C93932 /* SecCertificate+Extensions.swift */; };
+		2C3178B32F2AC92000C93932 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C3178B22F2AC92000C93932 /* Data+Extensions.swift */; };
+		2C8D97C82F2A75230042DBCE /* YKTokenExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 2C8D97BA2F2A75230042DBCE /* YKTokenExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		2C8D97D82F2A786D0042DBCE /* PIVCertificatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8D97D72F2A786D0042DBCE /* PIVCertificatesView.swift */; };
+		2C8D97DA2F2A786F0042DBCE /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8D97D92F2A786F0042DBCE /* MainTabView.swift */; };
+		2C8D97DD2F2A82FE0042DBCE /* X509 in Frameworks */ = {isa = PBXBuildFile; productRef = 2C8D97DC2F2A82FE0042DBCE /* X509 */; };
+		2CC41C442F2CE38000ED2884 /* X509 in Frameworks */ = {isa = PBXBuildFile; productRef = 2CC41C432F2CE38000ED2884 /* X509 */; };
 		51A1AC0E273D537500F999A4 /* OATHSampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A1AC0D273D537500F999A4 /* OATHSampleApp.swift */; };
 		51A1AC10273D537500F999A4 /* OATHListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A1AC0F273D537500F999A4 /* OATHListView.swift */; };
 		51A1AC12273D537800F999A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51A1AC11273D537800F999A4 /* Assets.xcassets */; };
@@ -19,8 +29,39 @@
 		B4F937582B5150D60007D394 /* YubiKit in Frameworks */ = {isa = PBXBuildFile; productRef = B4F937572B5150D60007D394 /* YubiKit */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		2C8D97C62F2A75230042DBCE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 51A1AC02273D537500F999A4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2C8D97B92F2A75230042DBCE;
+			remoteInfo = YKTokenExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		2C8D97CD2F2A75230042DBCE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				2C8D97C82F2A75230042DBCE /* YKTokenExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		51A1AC0A273D537500F999A4 /* OATHSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OATHSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C3178AB2F2AC86100C93932 /* TokenCertificateStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenCertificateStorage.swift; sourceTree = "<group>"; };
+		2C3178B02F2AC8ED00C93932 /* SecCertificate+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecCertificate+Extensions.swift"; sourceTree = "<group>"; };
+		2C3178B22F2AC92000C93932 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
+		2C8D97BA2F2A75230042DBCE /* YKTokenExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = YKTokenExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C8D97BB2F2A75230042DBCE /* CryptoTokenKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoTokenKit.framework; path = System/Library/Frameworks/CryptoTokenKit.framework; sourceTree = SDKROOT; };
+		2C8D97D72F2A786D0042DBCE /* PIVCertificatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PIVCertificatesView.swift; sourceTree = "<group>"; };
+		2C8D97D92F2A786F0042DBCE /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		51A1AC0A273D537500F999A4 /* Authenticator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Authenticator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51A1AC0D273D537500F999A4 /* OATHSampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OATHSampleApp.swift; sourceTree = "<group>"; };
 		51A1AC0F273D537500F999A4 /* OATHListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OATHListView.swift; sourceTree = "<group>"; };
 		51A1AC11273D537800F999A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -34,13 +75,38 @@
 		B456E218274FC967004471DE /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		2C8D97C92F2A75230042DBCE /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 2C8D97B92F2A75230042DBCE /* YKTokenExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		2C8D97BD2F2A75230042DBCE /* YKTokenExtension */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (2C8D97C92F2A75230042DBCE /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = YKTokenExtension; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		2C8D97B72F2A75230042DBCE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2C3178942F2AAAFC00C93932 /* YubiKit in Frameworks */,
+				2C31788F2F2AAAB900C93932 /* CryptoTokenKit.framework in Frameworks */,
+				2CC41C442F2CE38000ED2884 /* X509 in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		51A1AC07273D537500F999A4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				6C8465332DADB13300788FB7 /* YubiKit in Frameworks */,
 				6C8465302DADB11200788FB7 /* YubiKit in Frameworks */,
+				2C8D97DD2F2A82FE0042DBCE /* X509 in Frameworks */,
 				B4F937582B5150D60007D394 /* YubiKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,10 +114,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C3178AD2F2AC88100C93932 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2C3178B02F2AC8ED00C93932 /* SecCertificate+Extensions.swift */,
+				2C3178B22F2AC92000C93932 /* Data+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		51A1AC01273D537500F999A4 = {
 			isa = PBXGroup;
 			children = (
 				51A1AC0C273D537500F999A4 /* OATHSample */,
+				2C8D97BD2F2A75230042DBCE /* YKTokenExtension */,
 				51A1AC0B273D537500F999A4 /* Products */,
 				51A1AC28273D5D0A00F999A4 /* Frameworks */,
 			);
@@ -60,7 +136,8 @@
 		51A1AC0B273D537500F999A4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				51A1AC0A273D537500F999A4 /* OATHSample.app */,
+				51A1AC0A273D537500F999A4 /* Authenticator.app */,
+				2C8D97BA2F2A75230042DBCE /* YKTokenExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -68,6 +145,7 @@
 		51A1AC0C273D537500F999A4 /* OATHSample */ = {
 			isa = PBXGroup;
 			children = (
+				2C3178AD2F2AC88100C93932 /* Extensions */,
 				B4451EFE275F940E002690BB /* Info.plist */,
 				B4451EFB275F924D002690BB /* OATHSample.entitlements */,
 				51A1AC0D273D537500F999A4 /* OATHSampleApp.swift */,
@@ -77,6 +155,9 @@
 				6C54A5402E40BA1E00409BD5 /* ConnectionManager.swift */,
 				51A1AC11273D537800F999A4 /* Assets.xcassets */,
 				51A1AC13273D537800F999A4 /* Preview Content */,
+				2C8D97D72F2A786D0042DBCE /* PIVCertificatesView.swift */,
+				2C8D97D92F2A786F0042DBCE /* MainTabView.swift */,
+				2C3178AB2F2AC86100C93932 /* TokenCertificateStorage.swift */,
 			);
 			path = OATHSample;
 			sourceTree = "<group>";
@@ -94,6 +175,7 @@
 			children = (
 				B4451EFC275F924D002690BB /* ExternalAccessory.framework */,
 				51A1AC29273D5D0A00F999A4 /* YubiKit.framework */,
+				2C8D97BB2F2A75230042DBCE /* CryptoTokenKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -101,26 +183,53 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		51A1AC09273D537500F999A4 /* OATHSample */ = {
+		2C8D97B92F2A75230042DBCE /* YKTokenExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 51A1AC18273D537900F999A4 /* Build configuration list for PBXNativeTarget "OATHSample" */;
+			buildConfigurationList = 2C8D97CA2F2A75230042DBCE /* Build configuration list for PBXNativeTarget "YKTokenExtension" */;
 			buildPhases = (
-				51A1AC06273D537500F999A4 /* Sources */,
-				51A1AC07273D537500F999A4 /* Frameworks */,
-				51A1AC08273D537500F999A4 /* Resources */,
+				2C8D97B62F2A75230042DBCE /* Sources */,
+				2C8D97B72F2A75230042DBCE /* Frameworks */,
+				2C8D97B82F2A75230042DBCE /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = OATHSample;
+			fileSystemSynchronizedGroups = (
+				2C8D97BD2F2A75230042DBCE /* YKTokenExtension */,
+			);
+			name = YKTokenExtension;
+			packageProductDependencies = (
+				2C3178932F2AAAFC00C93932 /* YubiKit */,
+				2CC41C432F2CE38000ED2884 /* X509 */,
+			);
+			productName = YKTokenExtension;
+			productReference = 2C8D97BA2F2A75230042DBCE /* YKTokenExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		51A1AC09273D537500F999A4 /* Authenticator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 51A1AC18273D537900F999A4 /* Build configuration list for PBXNativeTarget "Authenticator" */;
+			buildPhases = (
+				51A1AC06273D537500F999A4 /* Sources */,
+				51A1AC07273D537500F999A4 /* Frameworks */,
+				51A1AC08273D537500F999A4 /* Resources */,
+				2C8D97CD2F2A75230042DBCE /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2C8D97C72F2A75230042DBCE /* PBXTargetDependency */,
+			);
+			name = Authenticator;
 			packageProductDependencies = (
 				B4F937572B5150D60007D394 /* YubiKit */,
 				6C84652F2DADB11200788FB7 /* YubiKit */,
 				6C8465322DADB13300788FB7 /* YubiKit */,
+				2C8D97DC2F2A82FE0042DBCE /* X509 */,
 			);
 			productName = OATHSample;
-			productReference = 51A1AC0A273D537500F999A4 /* OATHSample.app */;
+			productReference = 51A1AC0A273D537500F999A4 /* Authenticator.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -130,9 +239,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1310;
-				LastUpgradeCheck = 1630;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					2C8D97B92F2A75230042DBCE = {
+						CreatedOnToolsVersion = 26.2;
+					};
 					51A1AC09273D537500F999A4 = {
 						CreatedOnToolsVersion = 13.1;
 					};
@@ -148,18 +260,27 @@
 			);
 			mainGroup = 51A1AC01273D537500F999A4;
 			packageReferences = (
-				6C8465312DADB13300788FB7 /* XCLocalSwiftPackageReference "../../" */,
+				2C8D97DB2F2A82FE0042DBCE /* XCRemoteSwiftPackageReference "swift-certificates" */,
+				2C3178922F2AAAFC00C93932 /* XCLocalSwiftPackageReference "../../../yubikit-swift" */,
 			);
 			productRefGroup = 51A1AC0B273D537500F999A4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				51A1AC09273D537500F999A4 /* OATHSample */,
+				51A1AC09273D537500F999A4 /* Authenticator */,
+				2C8D97B92F2A75230042DBCE /* YKTokenExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2C8D97B82F2A75230042DBCE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		51A1AC08273D537500F999A4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -172,25 +293,158 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2C8D97B62F2A75230042DBCE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		51A1AC06273D537500F999A4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B456E219274FC967004471DE /* Model.swift in Sources */,
+				2C3178AC2F2AC86100C93932 /* TokenCertificateStorage.swift in Sources */,
 				6C54A5412E40BA1E00409BD5 /* ConnectionManager.swift in Sources */,
 				B456E217274E750D004471DE /* SettingsView.swift in Sources */,
 				51A1AC10273D537500F999A4 /* OATHListView.swift in Sources */,
+				2C8D97DA2F2A786F0042DBCE /* MainTabView.swift in Sources */,
+				2C8D97D82F2A786D0042DBCE /* PIVCertificatesView.swift in Sources */,
 				51A1AC0E273D537500F999A4 /* OATHSampleApp.swift in Sources */,
+				2C3178B12F2AC8ED00C93932 /* SecCertificate+Extensions.swift in Sources */,
+				2C3178B32F2AC92000C93932 /* Data+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		2C8D97C72F2A75230042DBCE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2C8D97B92F2A75230042DBCE /* YKTokenExtension */;
+			targetProxy = 2C8D97C62F2A75230042DBCE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		2C8D97CB2F2A75230042DBCE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = YKTokenExtension/YKTokenExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = PC8V36ULHP;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YKTokenExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = YKTokenExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sh.bjd.Authenticator.YKTokenExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2C8D97CC2F2A75230042DBCE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = YKTokenExtension/YKTokenExtension.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = PC8V36ULHP;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = PC8V36ULHP;
+				ENABLE_APP_SANDBOX = YES;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = YKTokenExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = YKTokenExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sh.bjd.Authenticator.YKTokenExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Authenticator Extension Ad-Hoc Distribution";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "Authenticator Extension Distribution MacOS";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		51A1AC16273D537900F999A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -245,6 +499,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -254,6 +509,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -301,6 +557,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
@@ -313,12 +570,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = OATHSample/OATHSample.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OATHSample/Preview Content\"";
+				DEVELOPMENT_TEAM = PC8V36ULHP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OATHSample/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Yuki;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NFCReaderUsageDescription = "The application needs access to NFC reading to communicate with your Yubikey.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -330,13 +591,16 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yubico.ios.OATHSample;
+				PRODUCT_BUNDLE_IDENTIFIER = sh.bjd.Authenticator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -349,12 +613,20 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = OATHSample/OATHSample.entitlements;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "3rd Party Mac Developer Application";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OATHSample/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = PC8V36ULHP;
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = PC8V36ULHP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OATHSample/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Yuki;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NFCReaderUsageDescription = "The application needs access to NFC reading to communicate with your Yubikey.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -366,13 +638,18 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.yubico.ios.OATHSample;
+				PRODUCT_BUNDLE_IDENTIFIER = sh.bjd.Authenticator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "Authenticator Ad-Hoc Distribution";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "Authentication Distribution MacOS";
+				REGISTER_APP_GROUPS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -382,6 +659,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2C8D97CA2F2A75230042DBCE /* Build configuration list for PBXNativeTarget "YKTokenExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2C8D97CB2F2A75230042DBCE /* Debug */,
+				2C8D97CC2F2A75230042DBCE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		51A1AC05273D537500F999A4 /* Build configuration list for PBXProject "OATHSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -391,7 +677,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		51A1AC18273D537900F999A4 /* Build configuration list for PBXNativeTarget "OATHSample" */ = {
+		51A1AC18273D537900F999A4 /* Build configuration list for PBXNativeTarget "Authenticator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				51A1AC19273D537900F999A4 /* Debug */,
@@ -403,13 +689,38 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		6C8465312DADB13300788FB7 /* XCLocalSwiftPackageReference "../../" */ = {
+		2C3178922F2AAAFC00C93932 /* XCLocalSwiftPackageReference "../../../yubikit-swift" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ../../;
+			relativePath = "../../../yubikit-swift";
 		};
 /* End XCLocalSwiftPackageReference section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		2C8D97DB2F2A82FE0042DBCE /* XCRemoteSwiftPackageReference "swift-certificates" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-certificates.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.17.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
+		2C3178932F2AAAFC00C93932 /* YubiKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = YubiKit;
+		};
+		2C8D97DC2F2A82FE0042DBCE /* X509 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C8D97DB2F2A82FE0042DBCE /* XCRemoteSwiftPackageReference "swift-certificates" */;
+			productName = X509;
+		};
+		2CC41C432F2CE38000ED2884 /* X509 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C8D97DB2F2A82FE0042DBCE /* XCRemoteSwiftPackageReference "swift-certificates" */;
+			productName = X509;
+		};
 		6C84652F2DADB11200788FB7 /* YubiKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = YubiKit;

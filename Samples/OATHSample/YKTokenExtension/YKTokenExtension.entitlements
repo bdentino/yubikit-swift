@@ -4,11 +4,6 @@
 <dict>
 	<key>com.apple.security.smartcard</key>
 	<true/>
-	<key>com.apple.developer.nfc.readersession.formats</key>
-	<array>
-		<string>NDEF</string>
-		<string>TAG</string>
-	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
 		<string>group.sh.bjd.Authenticator</string>
@@ -16,7 +11,6 @@
 	<key>keychain-access-groups</key>
 	<array>
 		<string>$(AppIdentifierPrefix)sh.bjd.Authenticator</string>
-		<string>$(AppIdentifierPrefix)com.apple.token</string>
 	</array>
 </dict>
 </plist>

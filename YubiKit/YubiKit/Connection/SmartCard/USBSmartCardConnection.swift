@@ -16,6 +16,9 @@
 import Foundation
 import OSLog
 
+let log = OSLog(subsystem: "sh.bjd.Authenticator.TokenExtension",
+                category: "smartcard")
+
 /// A connection to the YubiKey utilizing the USB port and the TKSmartCard implementation from
 /// the CryptoTokenKit framework.
 @available(iOS 16.0, macOS 13.0, *)
